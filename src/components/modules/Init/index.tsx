@@ -22,7 +22,8 @@ export default forwardRef(
 
     useEffect(() => {
       if (PanelRightSection == "map") setPanelRightElement(<Map />);
-    }, [panelRightElement]);
+      console.log(import.meta.env);
+    }, []);
 
     return (
       <main className={style.main}>
