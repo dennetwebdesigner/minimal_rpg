@@ -1,0 +1,17 @@
+.life {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+
+.mana {
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+}
+
+.xp {
+    width: 100%;
+    height: 100%;
+    background-color: orange;
+}

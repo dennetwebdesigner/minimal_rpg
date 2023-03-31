@@ -1,0 +1,9 @@
+.name {
+    font-size: 1.8em;
+    -webkit-text-stroke: 1px black;
+    color: brown;
+}
+
+.level {
+    font-size: 1em;
+}

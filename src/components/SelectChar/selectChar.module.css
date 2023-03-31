@@ -1,0 +1,89 @@
+.info {
+    width: 50%;
+    height: 100%;
+    overflow-y: auto;
+    padding-top: 10px;
+}
+
+.infoItem {
+    padding: 10px 20px;
+    font-size: 1.3em;
+    background-color: #f1f1f1;
+}
+
+.infoItem:nth-child(2n+3) {
+    background-color: #e1e1e1;
+
+}
+
+.infoItem span {
+    font-weight: bold;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContainer {
+    position: absolute;
+    width: 30%;
+    background-color: white;
+    box-shadow: 0 0 4px black;
+    opacity: 1;
+    padding: 20px
+}
+
+.modalContainer h3 {
+    font-weight: bolder;
+}
+
+.modalContainer p {
+    margin: 15px
+}
+
+.actions {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    margin-top: 20px
+}
+
+.actions button {
+    width: 100px;
+    height: 40px;
+    font-size: 1.3em;
+    margin-right: 10px;
+    background-color: firebrick;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.actions button:hover {
+    box-shadow: 2px 2px 4px black;
+    transition: .5s;
+    opacity: 0.6;
+}
