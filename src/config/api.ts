@@ -1,15 +1,13 @@
 import axios from "axios";
 
-
 import store from "@/store/store";
 
+import { url_base } from "./settings";
 
-const select = store.getState();
 const token = window.localStorage.getItem("token");
-const baseURL = "https://minimal-rpg-server-tdic.vercel.app/";
 
 export const api = axios.create({
-  baseURL,
+  baseURL: url_base,
   headers: {
     Authorization: `Bearer ${token}`,
   },

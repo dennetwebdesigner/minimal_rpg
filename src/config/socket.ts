@@ -1,6 +1,5 @@
 import socketio from "socket.io-client";
 
+import { url_base } from "./settings";
 
-const URL =
-  import.meta.env.API_URL || "https://minimal-rpg-server-tdic.vercel.app/";
-export const socket = socketio(URL);
+export const socket = socketio(url_base);
