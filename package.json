@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "vercel-build": "tsc && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -14,14 +14,14 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
-    "socket.io-client": "^4.6.1"
+    "socket.io-client": "^4.6.1",
+    "typescript": "^5.0.3",
+    "vite": "^4.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
-    "dotenv": "^16.0.3",
-    "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "dotenv": "^16.0.3"
   }
 }
