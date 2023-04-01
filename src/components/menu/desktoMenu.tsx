@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,7 @@ import style from "./desktopMenu.module.css";
 export default () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const currentPage = useSelector((state: any) => state.pages.module);
   const logout = () => {
     dispatch(destroyAuth());
     navigate("/login");
@@ -21,22 +21,44 @@ export default () => {
   const handleBackMaps = () => {
     PanelRight("map");
   };
-  return (
-    <header className={style.menuContainer}>
-      <h1>Jogo</h1>
 
-      <nav className={style.nav}>
+  const showSelectChar = () => {
+    return currentPage != "selectChar" && currentPage != "createChar" ? (
+      <div className={style.itemNav} onClick={_send_logout_char}>
+        personagens
+      </div>
+    ) : (
+      ""
+    );
+  };
+
+  const showMenuInGame = () => {
+    return currentPage != "game" ? (
+      ""
+    ) : (
+      <>
         <div className={style.itemNav}>Inicio</div>
         <div className={style.itemNav} onClick={handleBackMaps}>
           Mapas
         </div>
-        <div className={style.itemNav}>Iventario</div>
-      </nav>
+        <div
+          className={style.itemNav}
+          onClick={() => alert("Funcionalidade em Desenvolvimento!")}
+        >
+          Iventario
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <header className={style.menuContainer}>
+      <h1>Jogo</h1>
+
+      <nav className={style.nav}>{showMenuInGame()}</nav>
 
       <nav className={style.nav}>
-        <div className={style.itemNav} onClick={_send_logout_char}>
-          personagens
-        </div>
+        {showSelectChar()}
         <div className={style.itemNav} onClick={logout}>
           sair
         </div>
