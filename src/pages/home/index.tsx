@@ -1,22 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+
 import MenuDesktop from "@/components/menu/desktoMenu";
 
-import CreateChar from "@/components/modules/Character/CreateChar";
-
-import SelectChar from "@/components/modules/Character/SelectChar";
-import Init from "@/components/modules/Init";
 import { socket } from "@/config/socket";
+
 import { _error_character_connect } from "@/connection/_error_character_connection";
-
 import { _logout_char } from "@/connection/_logout_char";
-
 import { _system_chat } from "@/connection/chat/_system_chat";
+import CreateChar from "@/modules/Character/CreateChar";
+
+import SelectChar from "@/modules/Character/SelectChar";
+
+import Init from "@/modules/Init";
 
 import { addAuth } from "@/store/reduce/auth";
 
+
 import style from "./home.module.css";
+
 
 const tk = window.localStorage.getItem("token");
 
