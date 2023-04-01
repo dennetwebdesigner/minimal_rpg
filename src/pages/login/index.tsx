@@ -33,9 +33,16 @@ export default () => {
         username: username.value,
         password: password.value,
       });
-
-      dispatch(addAuth({ token: auth.data.token, authorization: true }));
+      console.log(auth);
+      dispatch(
+        addAuth({
+          token: auth.data.token,
+          authorization: true,
+          rule: auth.data.rule,
+        })
+      );
       window.localStorage.setItem("token", auth.data.token);
+      window.localStorage.setItem("rule", auth.data.rule);
       navigate("/");
     } catch (error: any) {
       if (error.response) {
