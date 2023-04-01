@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 
 import Battle from "@/components/game/Battle";
 import DisplayTagPanel from "@/components/game/DisplayTagPanel";
+import Enemys from "@/components/game/Enemys";
+
 import Lobby from "@/components/game/Lobby";
 
 import Map from "@/components/game/Map";
@@ -22,8 +24,8 @@ export default forwardRef(
 
     useEffect(() => {
       if (PanelRightSection == "map") setPanelRightElement(<Map />);
-      console.log(import.meta.env);
-    }, []);
+      if (PanelRightSection == "enemys") setPanelRightElement(<Enemys />);
+    }, [PanelRightSection]);
 
     return (
       <main className={style.main}>

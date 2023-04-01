@@ -1,6 +1,6 @@
 import { socket } from "@/config/socket";
-import { change } from "@/store/reduce/pages";
 import store from "@/store/store";
+import { gameRouter } from "@/utils/MouleRoutes/gameRouter";
 
 export const _send_logout_char = () => {
   const select = store.getState().character.current as any;
@@ -8,9 +8,7 @@ export const _send_logout_char = () => {
 };
 
 export const _logout_char = () => {
-  const dispatch = store.dispatch;
-
   socket.on("_logout_player", () => {
-    dispatch(change({ page: "selectChar" }));
+    gameRouter("selectChar");
   });
 };

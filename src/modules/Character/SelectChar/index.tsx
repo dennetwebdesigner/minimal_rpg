@@ -7,7 +7,7 @@ import PanelInfo from "@/components/SelectChar/PanelInfo";
 import { _add_character } from "@/connection/_add_character";
 import { select } from "@/store/reduce/character";
 
-import { change } from "@/store/reduce/pages";
+import { gameRouter } from "@/utils/MouleRoutes/gameRouter";
 
 import { selectChar } from "./selectChar";
 
@@ -30,7 +30,7 @@ export default () => {
     _add_character(char);
 
     dispatch(select(charInfo));
-    dispatch(change({ page: "game" }));
+    gameRouter("game");
   };
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export default () => {
       </div>
       <div className={style.actions}>
         <button onClick={() => setActiveModal(true)}>Remover</button>
-        <button onClick={() => dispatch(change({ page: "createChar" }))}>
+        <button onClick={() => gameRouter("createChar")}>
           Criar Personagem
         </button>
         <button onClick={handleSelectChar}>Jogar</button>

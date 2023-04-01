@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useSelector } from "react-redux";
 
 import { useDispatch } from "react-redux";
 
 import style from "@/components/game/Lobby/lobby.module.css";
+import { MapsAllInterface } from "@/interfaces/MapInterface";
 import { selectMap } from "@/store/reduce/maps";
 
-import { getAllMaps } from "./getAllMaps";
+import { PanelRight } from "@/utils/MouleRoutes/panelRight";
 
-interface iMaps {
-  creatures: string[];
-  name: string;
-}
+import { getAllMaps } from "./getAllMaps";
 
 export default () => {
   const maps = useSelector((state: any) => state.maps.all);
@@ -21,14 +19,15 @@ export default () => {
     getAllMaps();
   });
 
-  const handleSelectMap = (map: iMaps) => {
+  const handleSelectMap = (map: MapsAllInterface) => {
     dispatch(selectMap(map));
+    PanelRight("enemys");
   };
   return (
     <>
       <ul className={style.lobby}>
         <h3 className={style.titleLobby}>Mapas</h3>
-        {maps?.map((item: iMaps, i: number) => (
+        {maps?.map((item: MapsAllInterface, i: number) => (
           <li
             className={style.itemLobby}
             key={i}
