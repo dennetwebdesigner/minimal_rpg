@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+
 import MenuDesktop from "@/components/menu/desktoMenu";
 
 import { socket } from "@/config/socket";
@@ -16,7 +17,9 @@ import Init from "@/modules/Init";
 
 import { addAuth } from "@/store/reduce/auth";
 
+
 import style from "./home.module.css";
+
 
 const tk = window.localStorage.getItem("token");
 const rl = window.localStorage.getItem("rule");
@@ -33,10 +36,9 @@ export default () => {
   );
   const dispatch = useDispatch();
 
-  if (k.length <= 0)
-    dispatch(addAuth({ token: tk, authorization: false, rule: rl }));
-
   useEffect(() => {
+    if (k.length <= 0)
+      dispatch(addAuth({ token: tk, authorization: false, rule: rl }));
     if (page == "createChar") setPageModule(<CreateChar />);
     if (page == "game")
       setPageModule(<Init logSystem={logSystem} ref={logSystemContainer} />);

@@ -1,9 +1,13 @@
+import { AxiosError } from "axios";
+
 import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
+
 import { api } from "@/config/api";
 import style from "@/pages/login/login.module.css";
+
 
 export default () => {
   const navigation = useNavigate();
@@ -35,8 +39,8 @@ export default () => {
     api
       .post("/users", { username: username.value, password: password.value })
       .then((data) => {
-        alert();
-        navigation("/");
+        alert("Faça o login para terminar de ativar sua conta");
+        navigation("/login");
       })
       .catch(({ response }) => {
         const { message } = response.data;

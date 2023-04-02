@@ -2,15 +2,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+
 import { api } from "@/config/api";
 
 import { addAuth } from "@/store/reduce/auth";
 
+import { setAuthData } from "@/utils/services/setAuthData";
+
+
 import style from "./login.module.css";
 
+
 export default () => {
-  const authSession = useSelector((state: any) => state.authReducer.token);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmitLogin = async (e: any) => {
@@ -33,17 +36,12 @@ export default () => {
         username: username.value,
         password: password.value,
       });
-      console.log(auth);
-      dispatch(
-        addAuth({
-          token: auth.data.token,
-          authorization: true,
-          rule: auth.data.rule,
-        })
-      );
-      window.localStorage.setItem("token", auth.data.token);
-      window.localStorage.setItem("rule", auth.data.rule);
-      navigate("/");
+      setAuthData({
+        key: auth.data.token,
+        authorization: true,
+        rule: auth.data.rule,
+      });
+      window.location.href = "/";
     } catch (error: any) {
       if (error.response) {
         alert(error.response.data.message);
@@ -51,7 +49,6 @@ export default () => {
       }
       alert("Ocorreu um erro! recarregue a pagina e tente novamente!");
     }
-    // alert("Login realizado com sucesso");
   };
 
   return (
