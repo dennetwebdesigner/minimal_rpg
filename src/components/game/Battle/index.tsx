@@ -1,14 +1,20 @@
-import style from "@/components/modules/Init/game.module.css";
+import { _attack, battle_reponse } from "@/connection/combat/_attack";
 
-import DisplayTagPanel from "../DisplayTagPanel";
+import style from "@/modules/Init/game.module.css";
+
+import EnemyTagPanel from "../DisplayTagPanel/enemyTagPanel";
 
 export default ({ name, level }: { name: string; level: number }) => {
+  battle_reponse();
   return (
     <>
-      <DisplayTagPanel name={name} level={level} />
+      <EnemyTagPanel name={name} level={level} />
 
       <div className={`${style.panel} ${style.panelAction}`}>
-        <button className={`${style.btnAction} ${style.btnAttack}`}>
+        <button
+          onClick={_attack}
+          className={`${style.btnAction} ${style.btnAttack}`}
+        >
           Atacar
         </button>
         <button className={`${style.btnAction} ${style.btnDefense}`}>

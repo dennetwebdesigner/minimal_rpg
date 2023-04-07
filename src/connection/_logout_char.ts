@@ -1,6 +1,6 @@
 import { socket } from "@/config/socket";
 import store from "@/store/store";
-import { gameRouter } from "@/utils/MouleRoutes/gameRouter";
+import { gameRouter } from "@/utils/ModuleRoutes/gameRouter";
 
 export const _send_logout_char = () => {
   const select = store.getState().character.current as any;

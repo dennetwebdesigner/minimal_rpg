@@ -7,7 +7,7 @@ import PanelInfo from "@/components/SelectChar/PanelInfo";
 import { _add_character } from "@/connection/_add_character";
 import { select } from "@/store/reduce/character";
 
-import { gameRouter } from "@/utils/MouleRoutes/gameRouter";
+import { gameRouter } from "@/utils/ModuleRoutes/gameRouter";
 
 import { selectChar } from "./selectChar";
 
@@ -22,12 +22,10 @@ export default () => {
 
   const handleSelectChar = () => {
     const char = charInfo;
-    char.id = char.user_id;
-    delete char["user_id"];
     delete char["Attributes"]["id"];
     delete char["Attributes"]["character_id"];
 
-    _add_character(char);
+    _add_character({ character_id: char.id, player_id: char.user_id });
 
     dispatch(select(charInfo));
     gameRouter("game");

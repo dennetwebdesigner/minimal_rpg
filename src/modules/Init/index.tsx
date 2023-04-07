@@ -4,13 +4,11 @@ import { forwardRef } from "react";
 
 import { useSelector } from "react-redux";
 
-import Battle from "@/components/game/Battle";
 import DisplayTagPanel from "@/components/game/DisplayTagPanel";
-import Enemys from "@/components/game/Enemys";
-
-import Lobby from "@/components/game/Lobby";
 
 import Map from "@/components/game/Map";
+
+import { setPanelRight } from "@/utils/ModuleRoutes/panelRight";
 
 import style from "./game.module.css";
 
@@ -18,14 +16,14 @@ export default forwardRef(
   ({ logSystem }: { logSystem: string[] }, ref: any) => {
     const myCharacter = useSelector((state: any) => state.character.current);
     const [panelRightElement, setPanelRightElement] = useState(<Map />);
-    const PanelRightSection = useSelector(
+    const PanelRightModule = useSelector(
       (state: any) => state.pages.panelRight
     ) as string;
 
     useEffect(() => {
-      if (PanelRightSection == "map") setPanelRightElement(<Map />);
-      if (PanelRightSection == "enemys") setPanelRightElement(<Enemys />);
-    }, [PanelRightSection]);
+      const PanelRight = setPanelRight() as any;
+      setPanelRightElement(<PanelRight />);
+    }, [PanelRightModule]);
 
     return (
       <main className={style.main}>

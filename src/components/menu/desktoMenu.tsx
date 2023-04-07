@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { _send_logout_char } from "@/connection/_logout_char";
 import { destroyAuth } from "@/store/reduce/auth";
 
-import { PanelRight } from "@/utils/MouleRoutes/panelRight";
+import { PanelRight } from "@/utils/ModuleRoutes/panelRight";
 
 import style from "./desktopMenu.module.css";
 

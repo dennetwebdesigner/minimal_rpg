@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { gameRouter } from "@/utils/MouleRoutes/gameRouter";
+import { gameRouter } from "@/utils/ModuleRoutes/gameRouter";
 
 import { createChar } from "./createChar";
 

@@ -8,7 +8,7 @@ import style from "@/components/game/Lobby/lobby.module.css";
 import { MapsAllInterface } from "@/interfaces/MapInterface";
 import { selectMap } from "@/store/reduce/maps";
 
-import { PanelRight } from "@/utils/MouleRoutes/panelRight";
+import { PanelRight } from "@/utils/ModuleRoutes/panelRight";
 
 import { getAllMaps } from "./getAllMaps";
 

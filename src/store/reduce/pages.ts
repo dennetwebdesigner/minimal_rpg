@@ -1,8 +1,6 @@
 import { JSXElementConstructor } from "react";
 import { createSlice } from "@reduxjs/toolkit";
 
-import Map from "@/components/game/Map";
-
 export const moduleSlice = createSlice({
   name: "page",
   initialState: {

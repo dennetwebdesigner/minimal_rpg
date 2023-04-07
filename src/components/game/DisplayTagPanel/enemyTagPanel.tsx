@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { getStateStore } from "@/store/storeMethods";
 
-import {
-  expController,
-  lifeController,
-} from "@/utils/services/Battle/bars/controller";
+import { convertFor } from "@/utils/Math/Convert";
+
+import { lifeController } from "@/utils/services/Battle/bars/controller";
 
 import FloatBar from "../bars/FloatBar";
+
 import TagName from "../tagName";
 
 import style from "./panel.module.css";
@@ -20,26 +20,20 @@ interface iProps {
 export default ({ name, level }: iProps) => {
   const [life, setLife] = useState<number>(100);
   const [mana, setMana] = useState<number>(100);
-  const [exp, setExp] = useState<number>(100);
-  let myStatus = getStateStore("character", "current");
-
-  useEffect(() => {
-    const intervalValidate = setInterval(() => {}, 500);
-    return () => clearInterval(intervalValidate); //This is important
-  }, []);
+  const info = getStateStore("character", "enemy");
+  let a = 100;
 
   useEffect(() => {
     const intervalValidate = setInterval(() => {
-      const character = getStateStore("character", "current");
+      const enemy = getStateStore("character", "enemy");
       const panel = getStateStore("pages", "panelRight");
-      if (panel == "battle") {
-        console.log(character.Attributes.life_current);
+      if (enemy && panel == "battle") {
         const getLife = lifeController({
-          min: character.Attributes.life_current,
-          max: character.Attributes.life_max,
+          min: enemy.life.current,
+          max: enemy.life.max,
         });
 
-        setLife(getLife >= 0 ? getLife : 0);
+        setLife(getLife >= 0 ? getLife : 100);
       }
     }, 500);
     return () => clearInterval(intervalValidate);
@@ -47,10 +41,9 @@ export default ({ name, level }: iProps) => {
 
   return (
     <div className={style.panel}>
-      <TagName name={name} level={level} />
+      <TagName name={info.name} level={info.level} />
       <FloatBar setClass="life" size={life} />
       <FloatBar setClass="mana" size={mana} />
-      <FloatBar setClass="xp" size={exp} />
     </div>
   );
 };
