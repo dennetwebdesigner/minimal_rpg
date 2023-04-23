@@ -24,16 +24,10 @@ export default ({ name, level }: iProps) => {
   let myStatus = getStateStore("character", "current");
 
   useEffect(() => {
-    const intervalValidate = setInterval(() => {}, 500);
-    return () => clearInterval(intervalValidate); //This is important
-  }, []);
-
-  useEffect(() => {
     const intervalValidate = setInterval(() => {
       const character = getStateStore("character", "current");
       const panel = getStateStore("pages", "panelRight");
       if (panel == "battle") {
-        console.log(character.Attributes.life_current);
         const getLife = lifeController({
           min: character.Attributes.life_current,
           max: character.Attributes.life_max,

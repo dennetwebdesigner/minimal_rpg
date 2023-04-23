@@ -92,6 +92,12 @@
     color: white;
 }
 
+.btnAttack_disabled {
+    background-color: rgb(137, 0, 0);
+    color: white;
+    opacity: .5;
+}
+
 .btnDefense {
     background-color: blue;
     color: white;

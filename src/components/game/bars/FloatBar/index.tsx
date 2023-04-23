@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Bar from "../bar";
 

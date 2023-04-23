@@ -12,11 +12,12 @@ interface iInfo {
   };
 }
 
-export const _attack = () => {
+export const _attack = (btn_attack: HTMLButtonElement) => {
+  btn_attack.disabled = true;
   socket.emit("_battle/attack", null);
 };
 
-export const battle_reponse = () => {
+export const battle_response = () => {
   socket.on(
     "game_over/died",
     (data: { message: string; status: boolean; life: number }) => {

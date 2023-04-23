@@ -1,6 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+
+
+
+
+
+
+
+
+
+
 import MenuDesktop from "@/components/menu/desktoMenu";
 
 import { socket } from "@/config/socket";
@@ -18,10 +28,32 @@ import Init from "@/modules/Init";
 
 import { addAuth } from "@/store/reduce/auth";
 
+
+
+
+
+
+
+
+
+
+
 import style from "./home.module.css";
+
+
+
+
+
+
+
+
+
+
 
 const tk = window.localStorage.getItem("token");
 const rl = window.localStorage.getItem("rule");
+
+
 
 export default () => {
   const [pageModule, setPageModule] = useState<any>(<SelectChar />);
@@ -48,14 +80,16 @@ export default () => {
   _logout_char();
   _await_select_enemy();
 
+
+
   useEffect(() => {
-    socket.on("_system_log", ({ message }: { message: string }) => {
-      setTimeout(() => {
+    setTimeout(() => {
+      socket.on("_system_log", ({ message }: { message: string }) => {
         const div = logSystemContainer.current as any as HTMLDivElement;
         div.innerHTML += `<p>${message}</p>`;
-      }, 500);
-    });
-  }, []);
+      });
+    }, 500);
+  },[])
 
   return (
     <div className={style.container}>
